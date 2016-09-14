@@ -41,6 +41,9 @@ module MnoEnterprise::Concerns::Controllers::ProvisionController
       @organization = @organizations.one? ? @organizations.first : nil
     end
     authorize! :manage_app_instances, @organization
+    p '------------------start--------------'
+    p MnoEnterprise::Analytics.hi(@apps, @current_user)
+    p '------------------finish-------------'
 
     # Redirect to dashboard if no applications
     unless @apps && @apps.any?
